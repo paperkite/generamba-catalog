@@ -1,0 +1,26 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+
+class {{ module_info.name }}Presenter: {{ module_info.name }}PresenterProtocol {
+    
+    // MARK: - Properties
+    
+    weak var viewController: {{ module_info.name }}ViewControllerProtocol?
+    var interactor: {{ module_info.name }}InteractorInputProtocol?
+    var wireframe: {{ module_info.name }}WireframeProtocol?
+
+}
+
+// MARK: - {{ module_info.name }}InteractorOutputProtocol
+
+extension {{ module_info.name }}Presenter: {{ module_info.name }}InteractorOutputProtocol {
+	
+}
+

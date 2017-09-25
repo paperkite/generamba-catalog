@@ -1,0 +1,31 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+
+class {{ module_info.name }}Interactor: {{ module_info.name }}InteractorInputProtocol {
+    
+    // MARK: - Properties
+    
+    weak var presenter: {{ module_info.name }}InteractorOutputProtocol?
+    var localDataManager: {{ module_info.name }}LocalDataManagerInputProtocol?
+    var remoteDataManager: {{ module_info.name }}RemoteDataManagerInputProtocol?
+      
+}
+
+// MARK: - {{ module_info.name }}RemoteDataManagerOuputProtocol    
+
+extension {{ module_info.name }}Interactor: {{ module_info.name }}RemoteDataManagerOutputProtocol {
+    
+}
+
+// MARK: - {{ module_info.name }}LocalDataManagerOutputProtocol    
+
+extension {{ module_info.name }}Interactor: {{ module_info.name }}LocalDataManagerOutputProtocol {
+
+}
