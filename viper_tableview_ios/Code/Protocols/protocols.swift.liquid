@@ -1,0 +1,72 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+protocol {{ module_info.name }}ViewControllerProtocol: class {
+
+    var presenter: {{ module_info.name }}PresenterProtocol? { get set }
+    
+    // PRESENTER -> VIEW
+    func update(viewState: {{ module_info.name }}ViewState)
+}
+
+protocol {{ module_info.name }}WireframeProtocol: class {
+        
+    static func create{{ module_info.name }}Module() -> UIViewController
+    
+    // PRESENTER -> WIREFRAME
+}
+
+protocol {{ module_info.name }}PresenterProtocol: class {
+    weak var viewController: {{ module_info.name }}ViewControllerProtocol? { get set }
+    var interactor: {{ module_info.name }}InteractorInputProtocol? { get set }
+    var wireframe: {{ module_info.name }}WireframeProtocol? { get set }
+    
+    // VIEW -> PRESENTER        
+    func viewDidLoad()    
+    func viewWillAppear()
+
+    func numberOfSections(in: UITableView) -> Int
+    func numberOfRowsInSection(in: UITableView, section: Int) -> Int
+    func cellTypeAt(_ indexPath: IndexPath) -> {{ module_info.name }}ViewCellType 
+    func didSelectRow(in: UITableView, at indexPath: IndexPath) 
+}
+
+protocol {{ module_info.name }}InteractorOutputProtocol: class {
+    // INTERACTOR -> PRESENTER
+}
+
+protocol {{ module_info.name }}InteractorInputProtocol: class {
+    weak var presenter: {{ module_info.name }}InteractorOutputProtocol? { get set }
+    var localDataManager: {{ module_info.name }}LocalDataManagerInputProtocol? { get set }
+    var remoteDataManager: {{ module_info.name }}RemoteDataManagerInputProtocol? { get set }
+    
+    // PRESENTER -> INTERACTOR
+}
+
+protocol {{ module_info.name }}RemoteDataManagerInputProtocol: class {
+    weak var remoteRequestHandler: {{ module_info.name }}RemoteDataManagerOutputProtocol? { get set }
+    
+    // INTERACTOR -> REMOTEDATAMANAGER
+}
+
+protocol {{ module_info.name }}RemoteDataManagerOutputProtocol: class {
+    // REMOTEDATAMANAGER -> INTERACTOR
+}
+
+protocol {{ module_info.name }}LocalDataManagerInputProtocol: class, CacheManager {
+    weak var localRequestHandler: {{ module_info.name }}LocalDataManagerOutputProtocol? { get set }
+
+     // INTERACTOR -> LOCALDATAMANAGER
+}
+
+protocol {{ module_info.name }}LocalDataManagerOutputProtocol: class {
+    // LOCALDATAMANAGER -> INTERACTOR
+}
