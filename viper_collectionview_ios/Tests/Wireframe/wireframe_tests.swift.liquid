@@ -1,0 +1,86 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+import XCTest
+@testable import {{ module_info.project_name }}
+
+class {{ module_info.name }}WireframeMockTests: XCTestCase {
+    
+    var {{ module_info.name | downcase }}ViewControllerMock = {{ module_info.name }}ViewControllerMock()
+    var {{ module_info.name | downcase }}LocalDataManagerMock = {{ module_info.name }}LocalDataManagerMock()
+    var {{ module_info.name | downcase }}RemoteDataManagerMock = {{ module_info.name }}RemoteDataManagerMock()
+    var {{ module_info.name | downcase }}PresenterMock = {{ module_info.name }}PresenterMock()
+    var {{ module_info.name | downcase }}InteractorMock = {{ module_info.name }}InteractorMock()
+
+    var {{ module_info.name | downcase }}Wireframe = {{ module_info.name }}Wireframe()
+
+    override func setUp() {
+        super.setUp()
+        
+        self.{{ module_info.name | downcase }}ViewControllerMock = {{ module_info.name }}ViewControllerMock()
+        self.{{ module_info.name | downcase }}LocalDataManagerMock = {{ module_info.name }}LocalDataManagerMock()
+        self.{{ module_info.name | downcase }}RemoteDataManagerMock = {{ module_info.name }}RemoteDataManagerMock()
+        self.{{ module_info.name | downcase }}PresenterMock = {{ module_info.name }}PresenterMock()
+        self.{{ module_info.name | downcase }}InteractorMock = {{ module_info.name }}InteractorMock()
+
+        self.{{ module_info.name | downcase }}Wireframe = {{ module_info.name }}Wireframe()
+
+        // ----
+
+        self.{{ module_info.name | downcase }}ViewControllerMock.presenter = self.{{ module_info.name | downcase }}PresenterMock
+
+        self.{{ module_info.name | downcase }}PresenterMock.viewController = self.{{ module_info.name | downcase }}ViewControllerMock
+        self.{{ module_info.name | downcase }}PresenterMock.wireframe = self.{{ module_info.name | downcase }}Wireframe
+        self.{{ module_info.name | downcase }}PresenterMock.interactor = self.{{ module_info.name | downcase }}InteractorMock
+
+        self.{{ module_info.name | downcase }}InteractorMock.presenter = self.{{ module_info.name | downcase }}PresenterMock
+        self.{{ module_info.name | downcase }}InteractorMock.localDataManager = self.{{ module_info.name | downcase }}LocalDataManagerMock
+        self.{{ module_info.name | downcase }}InteractorMock.remoteDataManager = self.{{ module_info.name | downcase }}RemoteDataManagerMock
+
+        self.{{ module_info.name | downcase }}RemoteDataManagerMock.remoteRequestHandler = self.{{ module_info.name | downcase }}InteractorMock
+        self.{{ module_info.name | downcase }}LocalDataManagerMock.localRequestHandler = self.{{ module_info.name | downcase }}InteractorMock
+    }
+    
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
+    }
+
+    func testConfigureModuleForViewController() {
+
+        // Given
+
+        // When
+        guard let viewController: {{ module_info.name }}ViewControllerProtocol = {{ module_info.name }}Wireframe.create{{ module_info.name }}Module() as? {{ module_info.name }}ViewControllerProtocol else {
+            XCTFail("viewController is not {{ module_info.name }}ViewControllerProtocol")
+            return
+        }
+
+        // Then
+        XCTAssertNotNil(viewController.presenter, "viewController is nil after configuration")
+        XCTAssertTrue(viewController.presenter is {{ module_info.name }}Presenter, "presenter is not {{ module_info.name }}Presenter")
+
+        guard let presenter: {{ module_info.name }}Presenter = viewController.presenter as? {{ module_info.name }}Presenter else {
+            XCTFail("presenter is not {{ module_info.name }}Presenter")
+            return
+        }
+
+        XCTAssertNotNil(presenter.viewController, "viewController in {{ module_info.name }}Presenter is nil after configuration")
+        XCTAssertNotNil(presenter.wireframe, "wireframe in {{ module_info.name }}Presenter is nil after configuration")
+        XCTAssertTrue(presenter.wireframe is {{ module_info.name }}Wireframe, "wireframe is not {{ module_info.name }}Wireframe")
+
+        guard let interactor: {{ module_info.name }}Interactor = presenter.interactor as? {{ module_info.name }}Interactor else {
+            XCTFail("interactor is not {{ module_info.name }}Interactor")
+            return
+        }
+
+        XCTAssertNotNil(interactor.presenter, "presenter in {{ module_info.name }}Interactor is nil after configuration")
+    }
+
+}

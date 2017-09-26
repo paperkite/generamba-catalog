@@ -1,0 +1,161 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+import UIKit
+import XCTest
+@testable import {{ module_info.project_name }}
+
+// MARK: - PresenterMock
+
+class {{ module_info.name }}PresenterMock: {{ module_info.name }}PresenterProtocol, {{ module_info.name }}InteractorOutputProtocol {
+    
+    // MARK: - Properties
+    
+    weak var viewController: {{ module_info.name }}ViewControllerProtocol?
+    var interactor: {{ module_info.name }}InteractorInputProtocol?
+    var wireframe: {{ module_info.name }}WireframeProtocol?
+
+    var didCallViewDidLoad = false
+
+    func viewDidLoad() {
+        self.didCallViewDidLoad = true
+    }
+
+    var didCallViewDidAppear = false
+
+    func viewWillAppear() {
+        self.didCallViewDidAppear = true
+    }
+
+    var didCallNumberOfSectionForCollectionView: UICollectionView? = nil
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        self.didCallNumberOfSectionForCollectionView = collectionView
+        return 0
+    }
+
+    var didCallNumberOfItemsInSectionForColectinView: UICollectionView? = nil
+    var didCallNumberOfItemsInSection: Int? = nil
+
+    func numberOfItemsInSection(in collectionView: UICollectionView, section: Int) -> Int {
+        self.didCallNumberOfItemsInSectionForColectinView = collectionView
+        self.didCallNumberOfItemsInSection = section
+        return 0
+    }
+
+    var didCallCellTypeAtIndexPath: IndexPath? = nil
+
+    func cellTypeAt(_ indexPath: IndexPath) -> {{ module_info.name }}CollectionViewCellType {
+        self.didCallCellTypeAtIndexPath = indexPath
+        return .default
+    }
+    
+    var didCallDidSelectRowInCollectionView: UICollectionView? = nil
+    var didCallDidSelectRowForIndexPath: IndexPath? = nil
+
+    func didSelectRow(in collectionView: UICollectionView, at indexPath: IndexPath) {
+        self.didCallDidSelectRowInCollectionView = collectionView
+        self.didCallDidSelectRowForIndexPath = indexPath
+    }
+
+    // MARK: - {{ module_info.name }}InteractorOutputProtocol
+
+}
+
+
+// MARK: - InteractorMock
+
+class {{ module_info.name }}InteractorMock: {{ module_info.name }}InteractorInputProtocol, {{ module_info.name }}RemoteDataManagerOutputProtocol, {{ module_info.name }}LocalDataManagerOutputProtocol {
+    
+    // MARK: - Properties
+    
+    weak var presenter: {{ module_info.name }}InteractorOutputProtocol?
+    var localDataManager: {{ module_info.name }}LocalDataManagerInputProtocol?
+    var remoteDataManager: {{ module_info.name }}RemoteDataManagerInputProtocol?
+      
+    // MARK: - {{ module_info.name }}RemoteDataManagerOuputProtocol    
+
+    // MARK: - {{ module_info.name }}LocalDataManagerOutputProtocol  
+}
+
+// MARK: - ViewControllerMock
+
+class {{ module_info.name }}ViewControllerMock: BaseViewController<{{ module_info.name }}View>, {{ module_info.name }}ViewControllerProtocol {
+    
+    // MARK: - Properties
+    
+    var presenter: {{ module_info.name }}PresenterProtocol?
+    
+    // MARK: - UIViewController
+
+    override init() {
+        super.init()
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    // MARK: - {{ module_info.name }}ViewProtocol
+
+    var didCallUpdateWithViewState: {{ module_info.name }}ViewState? = nil
+    func update(viewState: {{ module_info.name }}ViewState) {
+        self.didCallUpdateWithViewState = viewState
+    }
+}
+
+
+// MARK: - WireframeMock
+
+class {{ module_info.name }}WireframeMock: {{ module_info.name }}WireframeProtocol {
+    
+    class func create{{ module_info.name }}Module() -> UIViewController {
+        return UIViewController()
+    }
+    
+    /*
+    func presentNextScreen(from view: NextViewProtocol) {
+        let nextViewController = NextWireframe.createNextModule()
+        
+        if let sourceView = view as? UIViewController {
+           sourceView.navigationController?.pushViewController(nextViewController, animated: true)
+        }
+    }
+    */
+}
+
+// MARK: - LocalDataManagerMock
+
+class {{ module_info.name }}LocalDataManagerMock: {{ module_info.name }}LocalDataManagerInputProtocol {
+
+	weak var localRequestHandler: {{ module_info.name }}LocalDataManagerOutputProtocol?
+
+    init() {}
+
+    deinit {
+        print("Deinit \(self)")
+    }
+}
+
+// MARK: - RemoteDataManagerMock
+
+class {{ module_info.name }}RemoteDataManagerMock: {{ module_info.name }}RemoteDataManagerInputProtocol {
+
+    weak var remoteRequestHandler: {{ module_info.name }}RemoteDataManagerOutputProtocol?
+
+    init() {}
+
+   	deinit {
+        print("Deinit \(self)")
+    }
+}

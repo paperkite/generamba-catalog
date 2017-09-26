@@ -1,0 +1,57 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+enum {{ module_info.name }}CollectionViewCellType {
+    case `default`
+}
+
+class {{ module_info.name }}Presenter: {{ module_info.name }}PresenterProtocol {
+    
+    // MARK: - Properties
+    
+    weak var viewController: {{ module_info.name }}ViewControllerProtocol?
+    var interactor: {{ module_info.name }}InteractorInputProtocol?
+    var wireframe: {{ module_info.name }}WireframeProtocol?
+
+    let objects: [String] = ["item1", "item2"]
+
+    func viewDidLoad() {
+        self.viewController?.update(viewState: .loading)
+        // self.interactor?.fetchObjects()
+    }
+
+    func viewWillAppear() {
+    }
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
+    func numberOfItemsInSection(in collectionView: UICollectionView, section: Int) -> Int {
+        return self.objects.count
+    }
+    
+    func cellTypeAt(_ indexPath: IndexPath) -> {{ module_info.name }}CollectionViewCellType {
+        return .default
+    }
+    
+    func didSelectRow(in: UICollectionView, at indexPath: IndexPath) {
+        // self.wireframe?.didRequestNewScreen()
+    }
+
+}
+
+// MARK: - {{ module_info.name }}InteractorOutputProtocol
+
+extension {{ module_info.name }}Presenter: {{ module_info.name }}InteractorOutputProtocol {
+	
+}
+
