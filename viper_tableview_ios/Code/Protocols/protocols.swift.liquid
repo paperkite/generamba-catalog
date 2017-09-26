@@ -33,10 +33,10 @@ protocol {{ module_info.name }}PresenterProtocol: class {
     func viewDidLoad()    
     func viewWillAppear()
 
-    func numberOfSections(in: UITableView) -> Int
-    func numberOfRowsInSection(in: UITableView, section: Int) -> Int
+    func numberOfSections(in tableView: UITableView) -> Int
+    func numberOfRowsInSection(in tableView: UITableView, section: Int) -> Int
     func cellTypeAt(_ indexPath: IndexPath) -> {{ module_info.name }}ViewCellType 
-    func didSelectRow(in: UITableView, at indexPath: IndexPath) 
+    func didSelectRow(in tableView: UITableView, at indexPath: IndexPath) 
 }
 
 protocol {{ module_info.name }}InteractorOutputProtocol: class {

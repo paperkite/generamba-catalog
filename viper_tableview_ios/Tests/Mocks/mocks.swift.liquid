@@ -13,7 +13,7 @@ import XCTest
 
 // MARK: - PresenterMock
 
-class {{ module_info.name }}PresenterMock: {{ module_info.name }}PresenterProtocol {
+class {{ module_info.name }}PresenterMock: {{ module_info.name }}PresenterProtocol, {{ module_info.name }}InteractorOutputProtocol {
     
     // MARK: - Properties
     
@@ -21,17 +21,57 @@ class {{ module_info.name }}PresenterMock: {{ module_info.name }}PresenterProtoc
     var interactor: {{ module_info.name }}InteractorInputProtocol?
     var wireframe: {{ module_info.name }}WireframeProtocol?
 
+    var didCallViewDidLoad = false
+
+    func viewDidLoad() {
+        self.didCallViewDidLoad = true
+    }
+
+    var didCallViewDidAppear = false
+
+    func viewWillAppear() {
+        self.didCallViewDidAppear = true
+    }
+
+    var didCallNumberOfSectionForTableView: UITableView? = nil
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        self.didCallNumberOfSectionForTableView = tableView
+        return 0
+    }
+
+    var didCallNumberOfRowsInSectionForTableView: UITableView? = nil
+    var didCallNumberOfRowsInSection: Int? = nil
+
+    func numberOfRowsInSection(in tableView: UITableView, section: Int) -> Int {
+        self.didCallNumberOfRowsInSectionForTableView = tableView
+        self.didCallNumberOfRowsInSection = section
+        return 0
+    }
+
+    var didCallCellTypeAtIndexPath: IndexPath? = nil
+
+    func cellTypeAt(_ indexPath: IndexPath) -> {{ module_info.name }}ViewCellType {
+        self.didCallCellTypeAtIndexPath = indexPath
+        return .default
+    }
+    
+    var didCallDidSelectRowInTableView: UITableView? = nil
+    var didCallDidSelectRowForIndexPath: IndexPath? = nil
+
+    func didSelectRow(in tableView: UITableView, at indexPath: IndexPath) {
+        self.didCallDidSelectRowInTableView = tableView
+        self.didCallDidSelectRowForIndexPath = indexPath
+    }
+
+    // MARK: - {{ module_info.name }}InteractorOutputProtocol
+
 }
 
-// MARK: - {{ module_info.name }}InteractorOutputProtocol
-
-extension {{ module_info.name }}PresenterMock: {{ module_info.name }}InteractorOutputProtocol {
-	
-}
 
 // MARK: - InteractorMock
 
-class {{ module_info.name }}InteractorMock: {{ module_info.name }}InteractorInputProtocol {
+class {{ module_info.name }}InteractorMock: {{ module_info.name }}InteractorInputProtocol, {{ module_info.name }}RemoteDataManagerOutputProtocol, {{ module_info.name }}LocalDataManagerOutputProtocol {
     
     // MARK: - Properties
     
@@ -39,23 +79,14 @@ class {{ module_info.name }}InteractorMock: {{ module_info.name }}InteractorInpu
     var localDataManager: {{ module_info.name }}LocalDataManagerInputProtocol?
     var remoteDataManager: {{ module_info.name }}RemoteDataManagerInputProtocol?
       
-}
+    // MARK: - {{ module_info.name }}RemoteDataManagerOuputProtocol    
 
-// MARK: - {{ module_info.name }}RemoteDataManagerOuputProtocol    
-
-extension {{ module_info.name }}InteractorMock: {{ module_info.name }}RemoteDataManagerOutputProtocol {
-    
-}
-
-// MARK: - {{ module_info.name }}LocalDataManagerOutputProtocol    
-
-extension {{ module_info.name }}InteractorMock: {{ module_info.name }}LocalDataManagerOutputProtocol {
-
+    // MARK: - {{ module_info.name }}LocalDataManagerOutputProtocol  
 }
 
 // MARK: - ViewControllerMock
 
-class {{ module_info.name }}ViewControllerMock: BaseViewController<{{ module_info.name }}View> {
+class {{ module_info.name }}ViewControllerMock: BaseViewController<{{ module_info.name }}View>, {{ module_info.name }}ViewControllerProtocol {
     
     // MARK: - Properties
     
@@ -74,14 +105,15 @@ class {{ module_info.name }}ViewControllerMock: BaseViewController<{{ module_inf
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
+    // MARK: - {{ module_info.name }}ViewProtocol
+
+    var didCallUpdateWithViewState: {{ module_info.name }}ViewState? = nil
+    func update(viewState: {{ module_info.name }}ViewState) {
+        self.didCallUpdateWithViewState = viewState
+    }
 }
 
-// MARK: - {{ module_info.name }}ViewProtocol
-
-extension {{ module_info.name }}ViewControllerMock: {{ module_info.name }}ViewControllerProtocol {
-
-}
 
 // MARK: - WireframeMock
 
