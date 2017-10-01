@@ -60,9 +60,9 @@ class {{ module_info.name }}ViewController: BaseViewModelViewController<{{ modul
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let paymentViewCellModel = self.viewModel.sections.value[indexPath.section].cells[indexPath.row]
+        let cellType = self.viewModel.sections.value[indexPath.section].cells[indexPath.row]
 
-        switch self.viewModel.sections.value[indexPath.section].cells[indexPath.row].cellType {
+        switch cellType {
             
             case .cellTypeOne/*(let viewModel)*/:
                 // let cellOne = collectionView.dequeueReusableCell(withIdentifier: CellOneTableViewCell.ReuseIdentifier, for: indexPath) as! CellOneColletionViewCell

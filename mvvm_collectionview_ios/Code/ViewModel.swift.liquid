@@ -17,17 +17,11 @@ class {{ module_info.name }}ViewModel: BaseViewModel {
     enum {{ module_info.name }}TypeCell {
         case cellTypeOne/*(viewModel: ViewCellModel)*/ // To rename and add ViewModelCell
     }
-    
-    /// Each cell in each section
-    public struct {{ module_info.name }}ViewCell {
-        let title: String
-        let cellType: {{ module_info.name }}TypeCell
-    }
 
-    /// The section of the table view
+    /// The sections
     public struct {{ module_info.name }}ViewSection {
         let title: String?
-        var cells: [{{ module_info.name }}ViewCell]
+        var cells: [{{ module_info.name }}TypeCell]
     }
     
     /// The state of the view
