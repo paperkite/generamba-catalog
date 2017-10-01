@@ -1,6 +1,6 @@
 # Template information section
-name: "mvvm_collectionview_ios"
-summary: "Swift MVVM module template including a simple collectionView."
+name: "mvvm_reactiveswift_tableview_ios"
+summary: "Swift MVVM module template including a simple tableview."
 author: "Walig Castain"
 version: "0.1.0"
 license: "MIT"
