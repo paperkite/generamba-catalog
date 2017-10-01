@@ -1,0 +1,31 @@
+# Template information section
+name: "mvvm_rxswift_collectionview_ios"
+summary: "Swift MVVM module template including a simple tableview."
+author: "Walig Castain"
+version: "0.1.0"
+license: "MIT"
+
+# The declarations for code files
+
+code_files:
+
+# View
+- {name: View.swift, path: Code/View.swift.liquid, custom_name: "{{ module_info.name }}View.swift"}
+
+# ViewController
+- {name: ViewController.swift, path: Code/ViewController.swift.liquid, custom_name: "{{ module_info.name }}ViewController.swift"}
+
+# ViewModel
+- {name: ViewModel.swift, path: Code/ViewModel.swift.liquid, custom_name: "{{ module_info.name }}ViewModel.swift"}
+
+# The declarations for test files
+test_files:
+
+# View tests
+- {name: View.swift, path: Tests/ViewTests.swift.liquid, custom_name: "{{ module_info.name }}ViewTests.swift"}
+
+# ViewController tests
+- {name: ViewController.swift, path: Tests/ViewControllerTests.swift.liquid, custom_name: "{{ module_info.name }}ViewControllerTests.swift"}
+
+# ViewModel tests
+- {name: ViewModel.swift, path: Tests/ViewModelTests.swift.liquid, custom_name: "{{ module_info.name }}ViewModelTests.swift"}

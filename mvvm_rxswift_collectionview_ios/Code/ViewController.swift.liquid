@@ -8,14 +8,14 @@
 
 import Foundation
 import UIKit
-import ReactiveCocoa
-import ReactiveSwift
+import RxSwift
+import RxCocoa
 
 protocol {{ module_info.name }}ViewControllerDelegate: class {
     
 }
 
-class {{ module_info.name }}ViewController: BaseViewModelViewController<{{ module_info.name }}ViewModel, {{ module_info.name }}View>, UICollectionViewDataSource, UICollectionViewDelegate {
+class {{ module_info.name }}ViewController: ViewController<{{ module_info.name }}ViewModel, {{ module_info.name }}View>, UICollectionViewDataSource, UICollectionViewDelegate {
 
     // MARK: - Properties
 
@@ -35,13 +35,20 @@ class {{ module_info.name }}ViewController: BaseViewModelViewController<{{ modul
     override func setupBindings() {
         super.setupBindings()
 
-        self.viewModel.viewState.producer.startWithValues { [weak self] viewState in
-            self?.rootView.updateView(with: viewState)
-        }
+        self.viewModel.viewState
+            .asObservable()
+            .subscribe(onNext: { [weak self] (viewState) in
+                self?.rootView.updateView(with: viewState)
+            })
+            .addDisposableTo(self.disposeBag)
 
-        self.viewModel.sections.producer.startWithValues { [weak self] next in
-            self?.rootView.collectionView.reloadData()
-        }
+        self.viewModel.sections
+            .asObservable()
+            .subscribe(onNext: { [weak self] (sections) in
+                self?.rootView.collectionView.reloadData()
+            })
+            .addDisposableTo(self.disposeBag)
+
     }
 
     override open func viewDidLoad() {
