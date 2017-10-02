@@ -33,7 +33,7 @@ templates:
 
 ## Templates:
 ### MVVM iOS
-A classic MVVM boilerplate without any third party libraries. The `ViewController.swift` is relying on a custom `BaseMVVMViewController.swift` file that can be found at the root of the repository.
+A classic MVVM boilerplate without any third party libraries. The `ViewController.swift` is relying on a custom `BaseViewController` file that can be found at the root of the repository in the `dependencies` framework.
 
 ### MVVM RxSwift / ReactiveSwift Tableview iOS
 An MVVM boilerplate for any screen based on a tableview. We have two versions, one with RxSwift or ReactiveSwift. The common bindings are already made. The rest of the work will be to fetch the content from the ViewModel, and adding custom `UITableViewCell`
@@ -42,7 +42,7 @@ An MVVM boilerplate for any screen based on a tableview. We have two versions, o
 Very similar to the TableView. Only the view is different including the different datasource methods.
 
 ### VIPER iOS
-The VIPER iOS is the blank canvas for any VIPER module. The `ViewController.swift` is relying on a custom `BaseVIPERViewController.swift` that can be found in every VIPER folder.
+The VIPER iOS is the blank canvas for any VIPER module. The `ViewController.swift` is relying on a custom `BaseViewController.swift` that can be found in the `dependencies` framework.
 
 ### VIPER TableView iOS
 The VIPER TableView iOS is a good starter for any VIPER module including a tableview. You will find all the datasources and delegate methods hooked to the presenter. Additionally all the classes are already mocked and ready to be tested 🚀.
