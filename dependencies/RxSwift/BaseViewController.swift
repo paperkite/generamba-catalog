@@ -57,7 +57,7 @@ class BaseViewController<M: ViewModel, V: RootView>: UIViewController, ViewContr
     }
     
     deinit {
-        Log.debug("deinit \(type(of: self))")
+        print("deinit \(type(of: self))")
     }
     
     // MARK: - View

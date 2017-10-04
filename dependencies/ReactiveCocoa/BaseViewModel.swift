@@ -41,6 +41,6 @@ open class BaseViewModel: ViewModel {
     }
     
     deinit {
-        Log.debug("deinit \(type(of: self))")
+        print("deinit \(type(of: self))")
     }
 }

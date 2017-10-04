@@ -28,7 +28,7 @@ public protocol RootView {
     func setupAutoLayoutContraints(_ parentViewController: UIViewController?)
 }
 
-open class BaseViewController<M: BaseViewModel, V: RootView>: UIViewController, ViewControllerWithViewModel where M: ViewModel, V: UIView {
+open class BaseViewController<M: BaseViewModel, V: RootView>: UIViewController, ViewControllerWithViewModel where V: UIView {
         
     // MARK: Properties
     /// The viewModel that the controller will bind to
@@ -68,22 +68,9 @@ open class BaseViewController<M: BaseViewModel, V: RootView>: UIViewController, 
         
         // Create the binding for the title
         self.viewModel.title.producer.skipNil().startWithValues { [weak self] (title) -> () in
-            self?.setAttributedTitle(Theme.navigationTitle(title))
+            self?.title = title
         }
 
-    }
-    
-    /// Sets a `UILabel` as the `navigationItem` view if it's nil, then sets the attributed text and calls `sizeToFit()`
-    open func setAttributedTitle(_ text: NSAttributedString) {
-        
-        if self.navigationItem.titleView == nil {
-            self.navigationItem.titleView = UILabel()
-        }
-        
-        if let label = self.navigationItem.titleView as? UILabel {
-            label.attributedText = text
-            label.sizeToFit()
-        }
     }
 
 }
