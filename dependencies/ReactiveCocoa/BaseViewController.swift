@@ -10,12 +10,25 @@ import Foundation
 import UIKit
 import ReactiveCocoa
 
+/// Defines a public protocol for all the view controllers to follow
+public protocol ViewControllerWithViewModel {
+    
+    associatedtype T: ViewModel
+    
+    var viewModel: T { get }
+    
+    init(viewModel: T)
+    
+    func setupBindings()
+    
+}
+
 /// A public protocol for views that will be contained in a BaseViewController
 public protocol RootView {
     func setupAutoLayoutContraints(_ parentViewController: UIViewController?)
 }
 
-open class BaseViewController<M: BaseViewModel, V: RootView>: UIViewController, ViewModelViewController where M: ViewModel, V: UIView {
+open class BaseViewController<M: BaseViewModel, V: RootView>: UIViewController, ViewControllerWithViewModel where M: ViewModel, V: UIView {
         
     // MARK: Properties
     /// The viewModel that the controller will bind to

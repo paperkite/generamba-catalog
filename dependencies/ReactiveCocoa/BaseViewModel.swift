@@ -10,6 +10,19 @@ import Foundation
 import ReactiveCocoa
 import ReactiveSwift
 
+/// All ViewModels should implement this protocol. Provides common accessors for the views.
+public protocol ViewModel {
+    
+    /// Required initialiser with the services to be used.
+    init(services: Services)
+    
+    /// The Services that the viewModel will use
+    var services: Services { get }
+    
+    /// Title of the view
+    var title: MutableProperty<String?> { get }
+}
+
 open class BaseViewModel: ViewModel {
     
     // MARK: Properties

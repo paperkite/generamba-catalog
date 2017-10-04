@@ -20,7 +20,7 @@ extension RootView {
 }
 
 /// Defines a protocol for all the view controllers to follow
-protocol ViewControllerWithModel {
+protocol ViewControllerWithViewModel {
     
     associatedtype T: ViewModel
     
@@ -31,7 +31,7 @@ protocol ViewControllerWithModel {
     func setupBindings()
 }
 
-class ViewController<M: ViewModel, V: RootView>: UIViewController, ViewControllerWithModel where M: ViewModel, V: UIView, V: RootView {
+class BaseViewController<M: ViewModel, V: RootView>: UIViewController, ViewControllerWithViewModel where V: UIView {
         
     // MARK: - Properties
     
