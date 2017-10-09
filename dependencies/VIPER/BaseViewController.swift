@@ -14,7 +14,7 @@ public protocol RootView {
     func setupAutoLayoutContraints(_ parentViewController: UIViewController?)
 }
 
-open class BaseViewController<V: RootView>: UIViewController where V: UIView, V: RootView {
+open class BaseViewController<V: RootView>: UIViewController where V: UIView {
     
     // MARK: Properties
     
