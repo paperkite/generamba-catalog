@@ -61,7 +61,7 @@ protocol {{ module_info.name }}RemoteDataManagerOutputProtocol: class {
     // REMOTEDATAMANAGER -> INTERACTOR
 }
 
-protocol {{ module_info.name }}LocalDataManagerInputProtocol: class, CacheManager {
+protocol {{ module_info.name }}LocalDataManagerInputProtocol: class {
     weak var localRequestHandler: {{ module_info.name }}LocalDataManagerOutputProtocol? { get set }
 
      // INTERACTOR -> LOCALDATAMANAGER
