@@ -1,0 +1,34 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+import AppKit
+
+class {{ module_info.name }}View: NSView, RootView {
+    
+    // MARK: - Properties
+
+    // MARK: - Initializers
+    
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+    }
+    
+    // MARK: - Layout
+    
+    func setupAutoLayoutContraints(_ parentViewController: NSViewController?) {
+
+    }
+    
+    
+    // MARK: - Methods
+    
+    deinit {
+        self.print("Deinit \(self)")
+    }
+}

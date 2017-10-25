@@ -1,0 +1,54 @@
+# Template information section
+name: "viper_viewcontroller_macos"
+summary: "Swift VIPER module template."
+author: "Walig Castain"
+version: "0.1.0"
+license: "MIT"
+
+# The declarations for code files
+
+code_files:
+
+# DataManager
+- {name: DataManagers/Local/LocalDataManager.swift, path: Code/DataManagers/Local/localDataManager.swift.liquid, custom_name: "{{ module_info.name }}LocalDataManager.swift"}
+- {name: DataManagers/Remote/RemoteDataManager.swift, path: Code/DataManagers/Remote/remoteDataManager.swift.liquid, custom_name: "{{ module_info.name }}RemoteDataManager.swift"}
+
+# Interactor
+- {name: Interactor/Interactor.swift, path: Code/Interactor/interactor.swift.liquid}
+
+# Presenter
+- {name: Presenter/Presenter.swift, path: Code/Presenter/presenter.swift.liquid, custom_name: "{{ module_info.name }}Presenter.swift"}
+
+# Protocols
+- {name: Protocols/Protocols.swift, path: Code/Protocols/protocols.swift.liquid, custom_name: "{{ module_info.name }}Protocols.swift"}
+
+# View
+- {name: View/ViewController.swift, path: Code/View/viewcontroller.swift.liquid, custom_name: "{{ module_info.name }}ViewController.swift"}
+- {name: View/View.swift, path: Code/View/view.swift.liquid, custom_name: "{{ module_info.name }}View.swift"}
+
+# Wireframe
+- {name: Wireframe/Wireframe.swift, path: Code/Wireframe/wireframe.swift.liquid, custom_name: "{{ module_info.name }}Wireframe.swift"}
+
+# The declarations for test files
+test_files:
+
+# DataManager tests
+- {name: DataManagers/Local/LocalDataManagerTests.swift, path: Tests/DataManagers/Local/localDataManager_tests.swift.liquid, custom_name: "{{ module_info.name }}LocalDataManagerTests.swift"}
+- {name: DataManagers/Remote/RemoteDataManagerTests.swift, path: Tests/DataManagers/Remote/remoteDataManager_tests.swift.liquid, custom_name: "{{ module_info.name }}RemoteDataManagerTests.swift"}
+
+# Interactor tests
+- {name: Interactor/InteractorTests.swift, path: Tests/Interactor/interactor_tests.swift.liquid, custom_name: "{{ module_info.name }}InteractorTests.swift"}
+
+# Mocks
+- {name: Mocks/Mocks.swift, path: Tests/Mocks/mocks.swift.liquid, custom_name: "{{ module_info.name }}Mocks.swift"}
+
+# Presenter tests
+- {name: Presenter/PresenterTests.swift, path: Tests/Presenter/presenter_tests.swift.liquid, custom_name: "{{ module_info.name }}PresenterTests.swift"}
+
+# View tests
+- {name: View/ViewControllerTests.swift, path: Tests/View/viewcontroller_tests.swift.liquid, custom_name: "{{ module_info.name }}ViewControllerTests.swift"}
+# - {name: View/ViewTests.swift, path: Code/View/view_tests.swift.liquid, custom_name: "{{ module_info.name }}ViewTests.swift"}
+
+# Wireframe tests
+- {name: Wireframe/WireframeTests.swift, path: Tests/Wireframe/wireframe_tests.swift.liquid, custom_name: "{{ module_info.name }}WireframeTests.swift"}
+
