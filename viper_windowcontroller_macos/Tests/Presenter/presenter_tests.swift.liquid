@@ -1,0 +1,63 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import XCTest
+@testable import {{ module_info.project_name }}
+
+class {{ module_info.name }}PresenterTests: XCTestCase {
+    
+    var {{ module_info.name | downcase }}ControllerMock = {{ module_info.name }}ControllerMock()
+    var {{ module_info.name | downcase }}LocalDataManagerMock = {{ module_info.name }}LocalDataManagerMock()
+    var {{ module_info.name | downcase }}RemoteDataManagerMock = {{ module_info.name }}RemoteDataManagerMock()
+    var {{ module_info.name | downcase }}InteractorMock = {{ module_info.name }}InteractorMock()
+    var {{ module_info.name | downcase }}WireframeMock = {{ module_info.name }}WireframeMock()
+
+    var {{ module_info.name | downcase }}Presenter = {{ module_info.name }}Presenter()
+
+    override func setUp() {
+        super.setUp()
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+
+        self.{{ module_info.name | downcase }}ControllerMock = {{ module_info.name }}ControllerMock()
+        self.{{ module_info.name | downcase }}LocalDataManagerMock = {{ module_info.name }}LocalDataManagerMock()
+        self.{{ module_info.name | downcase }}RemoteDataManagerMock = {{ module_info.name }}RemoteDataManagerMock()
+        self.{{ module_info.name | downcase }}InteractorMock = {{ module_info.name }}InteractorMock()
+        self.{{ module_info.name | downcase }}WireframeMock = {{ module_info.name }}WireframeMock()
+
+        self.{{ module_info.name | downcase }}Presenter = {{ module_info.name }}Presenter()
+
+        // ---
+
+        self.{{ module_info.name | downcase }}ControllerMock.presenter = self.{{ module_info.name | downcase }}Presenter
+
+        self.{{ module_info.name | downcase }}Presenter.windowController = self.{{ module_info.name | downcase }}ControllerMock
+        self.{{ module_info.name | downcase }}Presenter.wireframe = self.{{ module_info.name | downcase }}WireframeMock
+        self.{{ module_info.name | downcase }}Presenter.interactor = self.{{ module_info.name | downcase }}InteractorMock
+
+        self.{{ module_info.name | downcase }}InteractorMock.presenter = self.{{ module_info.name | downcase }}Presenter
+        self.{{ module_info.name | downcase }}InteractorMock.localDataManager = self.{{ module_info.name | downcase }}LocalDataManagerMock
+        self.{{ module_info.name | downcase }}InteractorMock.remoteDataManager = self.{{ module_info.name | downcase }}RemoteDataManagerMock
+
+        self.{{ module_info.name | downcase }}RemoteDataManagerMock.remoteRequestHandler = self.{{ module_info.name | downcase }}InteractorMock
+        self.{{ module_info.name | downcase }}LocalDataManagerMock.localRequestHandler = self.{{ module_info.name | downcase }}InteractorMock
+    }
+    
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
+    }
+
+    func test() {
+        // Given
+
+        // When
+
+        // Then
+    }
+    
+}

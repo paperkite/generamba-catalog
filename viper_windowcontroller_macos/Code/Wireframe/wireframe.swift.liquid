@@ -1,0 +1,35 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import AppKit
+
+class {{ module_info.name }}Wireframe: {{ module_info.name }}WireframeProtocol {
+    
+    class func create{{ module_info.name }}Module() -> NSWindowController {
+
+        let windowController: {{ module_info.name }}ControllerProtocol = {{ module_info.name }}Controller()
+        let presenter: {{ module_info.name }}PresenterProtocol & {{ module_info.name }}InteractorOutputProtocol = {{ module_info.name }}Presenter()
+        let interactor: {{ module_info.name }}InteractorInputProtocol & {{ module_info.name }}RemoteDataManagerOutputProtocol & {{ module_info.name }}LocalDataManagerOutputProtocol = {{ module_info.name }}Interactor()
+        let localDataManager: {{ module_info.name }}LocalDataManagerInputProtocol = {{ module_info.name }}LocalDataManager()
+        let remoteDataManager: {{ module_info.name }}RemoteDataManagerInputProtocol = {{ module_info.name }}RemoteDataManager()
+        let wireframe: {{ module_info.name }}WireframeProtocol = {{ module_info.name }}Wireframe()
+        
+        windowController.presenter = presenter
+        presenter.windowController = windowController
+        presenter.wireframe = wireframe
+        presenter.interactor = interactor
+        interactor.presenter = presenter
+        interactor.localDataManager = localDataManager
+        interactor.remoteDataManager = remoteDataManager
+        remoteDataManager.remoteRequestHandler = interactor
+        localDataManager.localRequestHandler = interactor
+        
+        return windowController as! NSWindowController
+    }
+    
+}
