@@ -36,7 +36,7 @@ class {{ module_info.name }}ViewControllerTests: XCTestCase {
 
         self.{{ module_info.name | downcase }}ViewController.presenter = self.{{ module_info.name | downcase }}PresenterMock
 
-        self.{{ module_info.name | downcase }}PresenterMock.viewController = self.{{ module_info.name | downcase }}ViewController
+        self.{{ module_info.name | downcase }}PresenterMock.windowController = self.{{ module_info.name | downcase }}ViewController
         self.{{ module_info.name | downcase }}PresenterMock.wireframe = self.{{ module_info.name | downcase }}WireframeMock
         self.{{ module_info.name | downcase }}PresenterMock.interactor = self.{{ module_info.name | downcase }}InteractorMock
 

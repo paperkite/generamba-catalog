@@ -11,7 +11,7 @@ import XCTest
 
 class {{ module_info.name }}LocalDataManagerTests: XCTestCase {
     
-    var {{ module_info.name | downcase }}ViewControllerMock = {{ module_info.name }}ViewControllerMock()
+    var {{ module_info.name | downcase }}ControllerMock = {{ module_info.name }}ControllerMock()
     var {{ module_info.name | downcase }}RemoteDataManagerMock = {{ module_info.name }}RemoteDataManagerMock()
     var {{ module_info.name | downcase }}PresenterMock = {{ module_info.name }}PresenterMock()
     var {{ module_info.name | downcase }}InteractorMock = {{ module_info.name }}InteractorMock()
@@ -23,7 +23,7 @@ class {{ module_info.name }}LocalDataManagerTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
-        self.{{ module_info.name | downcase }}ViewControllerMock = {{ module_info.name }}ViewControllerMock()
+        self.{{ module_info.name | downcase }}ControllerMock = {{ module_info.name }}ControllerMock()
         self.{{ module_info.name | downcase }}RemoteDataManagerMock = {{ module_info.name }}RemoteDataManagerMock()
         self.{{ module_info.name | downcase }}PresenterMock = {{ module_info.name }}PresenterMock()
         self.{{ module_info.name | downcase }}InteractorMock = {{ module_info.name }}InteractorMock()
@@ -33,9 +33,9 @@ class {{ module_info.name }}LocalDataManagerTests: XCTestCase {
 
         // ---
 
-        self.{{ module_info.name | downcase }}ViewControllerMock.presenter = self.{{ module_info.name | downcase }}PresenterMock
+        self.{{ module_info.name | downcase }}ControllerMock.presenter = self.{{ module_info.name | downcase }}PresenterMock
 
-        self.{{ module_info.name | downcase }}PresenterMock.viewController = self.{{ module_info.name | downcase }}ViewControllerMock
+        self.{{ module_info.name | downcase }}PresenterMock.windowController = self.{{ module_info.name | downcase }}ControllerMock
         self.{{ module_info.name | downcase }}PresenterMock.wireframe = self.{{ module_info.name | downcase }}WireframeMock
         self.{{ module_info.name | downcase }}PresenterMock.interactor = self.{{ module_info.name | downcase }}InteractorMock
 
