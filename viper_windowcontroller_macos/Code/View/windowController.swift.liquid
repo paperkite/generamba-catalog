@@ -9,7 +9,7 @@
 import Foundation
 import AppKit
 
-class {{ module_info.name }}Controller: BaseWindowController<{{ module_info.name }}WindowView> {
+class {{ module_info.name }}Controller: BaseWindowController<{{ module_info.name }}View> {
     
     // MARK: - Properties
     
@@ -29,9 +29,9 @@ class {{ module_info.name }}Controller: BaseWindowController<{{ module_info.name
     
 }
 
-// MARK: - {{ module_info.name }}WindowControllerProtocol
+// MARK: - {{ module_info.name }}ControllerProtocol
 
-extension {{ module_info.name }}WindowController: {{ module_info.name }}ControllerProtocol {
+extension {{ module_info.name }}Controller: {{ module_info.name }}ControllerProtocol {
 
 }
 

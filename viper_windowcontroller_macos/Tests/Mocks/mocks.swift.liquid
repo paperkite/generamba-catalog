@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import UIKit
+import AppKit
 import XCTest
 @testable import {{ module_info.project_name }}
 
@@ -20,6 +20,12 @@ class {{ module_info.name }}PresenterMock: {{ module_info.name }}PresenterProtoc
     weak var windowController: {{ module_info.name }}ControllerProtocol?
     var interactor: {{ module_info.name }}InteractorInputProtocol?
     var wireframe: {{ module_info.name }}WireframeProtocol?
+
+    var didCallWindowDidLoad = false
+
+    func windowDidLoad() {
+        self.didCallWindowDidLoad = true
+    }
 
     // MARK: - {{ module_info.name }}InteractorOutputProtocol
 

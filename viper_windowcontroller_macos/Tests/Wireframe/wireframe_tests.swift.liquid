@@ -57,7 +57,7 @@ class {{ module_info.name }}WireframeMockTests: XCTestCase {
         // Given
 
         // When
-        guard let windowController: {{ module_info.name }}ViewControllerProtocol = {{ module_info.name }}Wireframe.create{{ module_info.name }}Module() as? {{ module_info.name }}ViewControllerProtocol else {
+        guard let windowController: {{ module_info.name }}ControllerProtocol = {{ module_info.name }}Wireframe.create{{ module_info.name }}Module() as? {{ module_info.name }}ControllerProtocol else {
             XCTFail("windowController is not {{ module_info.name }}ViewControllerProtocol")
             return
         }

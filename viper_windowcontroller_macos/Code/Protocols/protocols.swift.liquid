@@ -24,7 +24,7 @@ protocol {{ module_info.name }}WireframeProtocol: class {
 }
 
 protocol {{ module_info.name }}PresenterProtocol: class {
-    weak var windowController: {{ module_info.name }}WindowControllerProtocol? { get set }
+    weak var windowController: {{ module_info.name }}ControllerProtocol? { get set }
     var interactor: {{ module_info.name }}InteractorInputProtocol? { get set }
     var wireframe: {{ module_info.name }}WireframeProtocol? { get set }
     

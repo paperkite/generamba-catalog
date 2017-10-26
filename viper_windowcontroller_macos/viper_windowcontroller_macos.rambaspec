@@ -23,7 +23,7 @@ code_files:
 - {name: Protocols/Protocols.swift, path: Code/Protocols/protocols.swift.liquid, custom_name: "{{ module_info.name }}Protocols.swift"}
 
 # View
-- {name: View/WindowController.swift, path: Code/View/windowcontroller.swift.liquid, custom_name: "{{ module_info.name }}WindowController.swift"}
+- {name: View/WindowController.swift, path: Code/View/windowcontroller.swift.liquid, custom_name: "{{ module_info.name }}Controller.swift"}
 - {name: View/View.swift, path: Code/View/view.swift.liquid, custom_name: "{{ module_info.name }}View.swift"}
 
 # Wireframe
@@ -46,7 +46,7 @@ test_files:
 - {name: Presenter/PresenterTests.swift, path: Tests/Presenter/presenter_tests.swift.liquid, custom_name: "{{ module_info.name }}PresenterTests.swift"}
 
 # View tests
-- {name: View/ViewControllerTests.swift, path: Tests/View/viewcontroller_tests.swift.liquid, custom_name: "{{ module_info.name }}ViewControllerTests.swift"}
+- {name: View/WindowController.swift, path: Tests/View/windowcontroller_tests.swift.liquid, custom_name: "{{ module_info.name }}ControllerTests.swift"}
 # - {name: View/ViewTests.swift, path: Code/View/view_tests.swift.liquid, custom_name: "{{ module_info.name }}ViewTests.swift"}
 
 # Wireframe tests
