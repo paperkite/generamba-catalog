@@ -22,7 +22,10 @@ class {{ module_info.name }}ViewController: BaseViewController<{{ module_info.na
 
         self.presenter?.viewDidLoad()
     }
-    
+
+    deinit {
+        Swift.print("Deinit \(self)")
+    }   
 }
 
 // MARK: - {{ module_info.name }}ViewProtocol
