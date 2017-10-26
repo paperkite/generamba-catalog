@@ -16,6 +16,9 @@ class {{ module_info.name }}Interactor: {{ module_info.name }}InteractorInputPro
     var localDataManager: {{ module_info.name }}LocalDataManagerInputProtocol?
     var remoteDataManager: {{ module_info.name }}RemoteDataManagerInputProtocol?
       
+    deinit {
+        Swift.print("Deinit \(self)")
+    }
 }
 
 // MARK: - {{ module_info.name }}RemoteDataManagerOuputProtocol    

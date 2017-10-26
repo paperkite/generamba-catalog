@@ -27,6 +27,9 @@ class {{ module_info.name }}Controller: BaseWindowController<{{ module_info.name
         self.presenter?.windowDidLoad()
     }
     
+    deinit {
+        Swift.print("Deinit \(self)")
+    }
 }
 
 // MARK: - {{ module_info.name }}ControllerProtocol

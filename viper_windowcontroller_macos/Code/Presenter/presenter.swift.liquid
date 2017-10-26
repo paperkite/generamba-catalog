@@ -19,6 +19,9 @@ class {{ module_info.name }}Presenter: {{ module_info.name }}PresenterProtocol {
     func windowDidLoad() {
     }
     
+    deinit {
+        Swift.print("Deinit \(self)")
+    }
 }
 
 // MARK: - {{ module_info.name }}InteractorOutputProtocol
