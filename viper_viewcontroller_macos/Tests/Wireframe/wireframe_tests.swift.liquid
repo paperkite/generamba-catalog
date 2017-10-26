@@ -35,7 +35,7 @@ class {{ module_info.name }}WireframeMockTests: XCTestCase {
 
         self.{{ module_info.name | downcase }}ControllerMock.presenter = self.{{ module_info.name | downcase }}PresenterMock
 
-        self.{{ module_info.name | downcase }}PresenterMock.windowController = self.{{ module_info.name | downcase }}ControllerMock
+        self.{{ module_info.name | downcase }}PresenterMock.viewController = self.{{ module_info.name | downcase }}ControllerMock
         self.{{ module_info.name | downcase }}PresenterMock.wireframe = self.{{ module_info.name | downcase }}Wireframe
         self.{{ module_info.name | downcase }}PresenterMock.interactor = self.{{ module_info.name | downcase }}InteractorMock
 
@@ -57,29 +57,29 @@ class {{ module_info.name }}WireframeMockTests: XCTestCase {
         // Given
 
         // When
-        guard let windowController: {{ module_info.name }}ViewControllerProtocol = {{ module_info.name }}Wireframe.create{{ module_info.name }}Module() as? {{ module_info.name }}ViewControllerProtocol else {
-            XCTFail("windowController is not {{ module_info.name }}ViewControllerProtocol")
+        guard let presenter: {{ module_info.name }}PresenterProtocol  = {{ module_info.name }}Wireframe.create{{ module_info.name }}Module() as? {{ module_info.name }}PresenterProtocol else {
+            XCTFail("presenter is not {{ module_info.name }}PresenterProtocol")
             return
         }
 
         // Then
-        XCTAssertNotNil(windowController.presenter, "windowController is nil after configuration")
-        XCTAssertTrue(windowController.presenter is {{ module_info.name }}Presenter, "presenter is not {{ module_info.name }}Presenter")
+        XCTAssertNotNil(presenter.viewController, "viewController in {{ module_info.name }}Presenter is nil after configuration")
+        XCTAssertNotNil(presenter.wireframe, "wireframe in {{ module_info.name }}Presenter is nil after configuration")
+        XCTAssertTrue(presenter.wireframe is {{ module_info.name }}Wireframe, "wireframe is not {{ module_info.name }}Wireframe")
 
-        guard let presenter: {{ module_info.name }}Presenter = windowController.presenter as? {{ module_info.name }}Presenter else {
-            XCTFail("presenter is not {{ module_info.name }}Presenter")
+        guard let viewController: {{ module_info.name }}ViewController = presenter.viewController as? {{ module_info.name }}ViewController else {
+            XCTFail("presenter is not {{ module_info.name }}ViewController")
             return
         }
 
-        XCTAssertNotNil(presenter.windowController, "windowController in {{ module_info.name }}Presenter is nil after configuration")
-        XCTAssertNotNil(presenter.wireframe, "wireframe in {{ module_info.name }}Presenter is nil after configuration")
-        XCTAssertTrue(presenter.wireframe is {{ module_info.name }}Wireframe, "wireframe is not {{ module_info.name }}Wireframe")
+        XCTAssertNotNil(viewController.presenter, "presenter is nil after configuration")
+        XCTAssertTrue(viewController.presenter is {{ module_info.name }}Presenter, "presenter is not {{ module_info.name }}Presenter")
 
         guard let interactor: {{ module_info.name }}Interactor = presenter.interactor as? {{ module_info.name }}Interactor else {
             XCTFail("interactor is not {{ module_info.name }}Interactor")
             return
         }
-
+         
         XCTAssertNotNil(interactor.presenter, "presenter in {{ module_info.name }}Interactor is nil after configuration")
     }
 

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import UIKit
+import AppKit
 
 protocol {{ module_info.name }}ViewControllerProtocol: class {
 
@@ -18,7 +18,7 @@ protocol {{ module_info.name }}ViewControllerProtocol: class {
 
 protocol {{ module_info.name }}WireframeProtocol: class {
         
-    static func create{{ module_info.name }}Module() -> UIViewController
+    static func create{{ module_info.name }}Module() -> {{ module_info.name }}PresenterProtocol
     
     // PRESENTER -> WIREFRAME
 }

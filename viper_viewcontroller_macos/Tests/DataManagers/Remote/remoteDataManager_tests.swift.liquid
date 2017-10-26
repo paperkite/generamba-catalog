@@ -34,7 +34,7 @@ class {{ module_info.name }}RemoteDataManagerTests: XCTestCase {
 
         self.{{ module_info.name | downcase }}ControllerMock.presenter = self.{{ module_info.name | downcase }}PresenterMock
 
-        self.{{ module_info.name | downcase }}PresenterMock.windowController = self.{{ module_info.name | downcase }}ControllerMock
+        self.{{ module_info.name | downcase }}PresenterMock.viewController = self.{{ module_info.name | downcase }}ControllerMock
         self.{{ module_info.name | downcase }}PresenterMock.wireframe = self.{{ module_info.name | downcase }}WireframeMock
         self.{{ module_info.name | downcase }}PresenterMock.interactor = self.{{ module_info.name | downcase }}InteractorMock
 
