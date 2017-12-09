@@ -30,10 +30,8 @@ class {{ module_info.name }}ControllerTests: XCTestCase {
         self.{{ module_info.name | downcase }}InteractorMock = {{ module_info.name }}InteractorMock()
         self.{{ module_info.name | downcase }}WireframeMock = {{ module_info.name }}WireframeMock()
 
-        self.{{ module_info.name | downcase }}Controller = {{ module_info.name }}Controller()
-        self.{{ module_info.name | downcase }}Controller.window = NSWindow()
-        self.{{ module_info.name | downcase }}Controller.window!.contentView = {{ module_info.name }}View()
-
+        self.{{ module_info.name | downcase }}Controller = {{ module_info.name }}Controller(windowNibName: NSNib.Name("{{ module_info.name }}"))
+        
         // ---
 
         self.{{ module_info.name | downcase }}Controller.presenter = self.{{ module_info.name | downcase }}PresenterMock
@@ -60,7 +58,7 @@ class {{ module_info.name }}ControllerTests: XCTestCase {
         XCTAssert(self.{{ module_info.name | downcase }}PresenterMock.didCallWindowDidLoad == false)
 
         // When
-        self.filterwindowController.windowDidLoad()
+        self.{{ module_info.name | downcase }}Controller.windowDidLoad()
         
         // Then
         XCTAssert(self.{{ module_info.name | downcase }}PresenterMock.didCallWindowDidLoad == true)

@@ -15,8 +15,8 @@ class {{ module_info.name }}Controller: BaseWindowController<{{ module_info.name
     
     var presenter: {{ module_info.name }}PresenterProtocol?
     
-    override var windowNibName: String! {
-        return "{{ module_info.name }}"
+    override var windowNibName: NSNib.Name {
+        return NSNib.Name("{{ module_info.name }}")
     }
 
     // MARK: - NSWindowController
