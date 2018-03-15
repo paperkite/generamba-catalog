@@ -24,7 +24,6 @@ class {{ module_info.name }}View: UIView, RootView {
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero)
         // tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier)
-        tableView.backgroundColor = Theme.Color.black
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         tableView.separatorInset = UIEdgeInsets.zero
