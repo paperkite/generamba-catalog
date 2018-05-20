@@ -26,6 +26,7 @@ class {{ module_info.name }}Wireframe: {{ module_info.name }}WireframeProtocol {
         interactor.presenter = presenter
         interactor.localDataManager = localDataManager
         interactor.remoteDataManager = remoteDataManager
+	    localDataManager.localRequestHandler = interactor
         remoteDataManager.remoteRequestHandler = interactor
         
         return view as! UIViewController
