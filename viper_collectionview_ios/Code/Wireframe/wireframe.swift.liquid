@@ -32,7 +32,7 @@ class {{ module_info.name }}Wireframe: {{ module_info.name }}WireframeProtocol {
     }
     
     /*
-    func presentNextScreen(from view: NextViewProtocol) {
+    func presentNextScreen(from view: {{ module_info.name }}ViewControllerProtocol) {
         let nextViewController = NextWireframe.createNextModule()
         
         if let sourceView = view as? UIViewController {
